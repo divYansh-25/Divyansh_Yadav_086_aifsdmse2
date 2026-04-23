@@ -13,7 +13,7 @@ function Register() {
 
   const submit = async () => {
     await axios.post(
-      "http://localhost:5000/api/register",
+      "https://divyansh-yadav-086-aifsdmse2.onrender.com/api/register",
       form
     );
 

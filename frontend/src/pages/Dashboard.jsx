@@ -25,7 +25,7 @@ function Dashboard() {
   const load = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/grievances",
+        "https://divyansh-yadav-086-aifsdmse2.onrender.com/api/grievances",
         headers
       );
       setList(res.data);
@@ -65,7 +65,7 @@ function Dashboard() {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/grievances",
+        "https://divyansh-yadav-086-aifsdmse2.onrender.com/api/grievances",
         {
           title,
           description,
@@ -91,7 +91,7 @@ function Dashboard() {
   const del = async (id) => {
     try {
       await axios.delete(
-        "http://localhost:5000/api/grievances/" + id,
+        "https://divyansh-yadav-086-aifsdmse2.onrender.com/api/grievances/" + id,
         headers
       );
 

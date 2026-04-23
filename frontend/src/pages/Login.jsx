@@ -12,7 +12,7 @@ function Login() {
 
   const submit = async () => {
     const res = await axios.post(
-      "http://localhost:5000/api/login",
+      "https://divyansh-yadav-086-aifsdmse2.onrender.com/api/login",
       form
     );
 
