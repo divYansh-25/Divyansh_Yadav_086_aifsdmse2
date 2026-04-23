@@ -20,22 +20,38 @@ router.post("/register", async(req,res)=>{
     res.json({msg:"Registered"});
 });
 
-router.post("/login", async(req,res)=>{
-    const {email,password}=req.body;
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
 
-    const user = await Student.findOne({email});
-    if(!user) return res.status(400).json({msg:"Invalid Email"});
+  const user = await Student.findOne({ email });
 
-    const match = await bcrypt.compare(password,user.password);
+  if (!user)
+    return res.status(400).json({
+      msg: "Invalid Email",
+    });
 
-    if(!match) return res.status(400).json({msg:"Wrong Password"});
+  const match = await bcrypt.compare(
+    password,
+    user.password
+  );
 
-    const token = jwt.sign(
-        {id:user._id},
-        process.env.JWT_SECRET
-    );
+  if (!match)
+    return res.status(400).json({
+      msg: "Wrong Password",
+    });
 
-    res.json({token});
+  const token = jwt.sign(
+    { id: user._id },
+    process.env.JWT_SECRET
+  );
+
+  res.json({
+    token,
+    user: {
+      name: user.name,
+      email: user.email,
+    },
+  });
 });
 
 module.exports = router;
